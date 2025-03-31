@@ -1,7 +1,22 @@
+import React from "react";
+
 const Button = (props) => {
-  const {id,className,title}=props
-  console.log(id,className,title)
-  return <button>click me</button>;
+    let { href, type = "", children, ...restprops } = props;
+     href=`https://adc.com${href}`
+     
+    return (
+        <>  
+            {href ? (
+                <a href={href} {...restprops} className={`btn ${type}`}>
+                    {children}
+                </a>
+            ) : (
+                <button {...restprops} className={`btn ${type}`}>
+                    {children}
+                </button>
+            )}
+        </>
+    );
 };
 
 export default Button;
